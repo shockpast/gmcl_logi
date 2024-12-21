@@ -5,14 +5,14 @@ A C++ Garry's Mod module for interfacing with LogiLED SDK *(tested on G102, and 
 ## Requirements
 
 - Visual Studio 2022
-- [Logitech Gaming Software](https://support.logi.com/hc/en-us/articles/360025298053-Logitech-Gaming-Software)
+- [Logitech SDK](https://www.logitechg.com/en-us/innovation/developer-lab)
 - [garrysmod_common](https://github.com/danielga/garrysmod_common) *(x64 branch)*
 
 ## Building
 
-1. Clone the repository with submodules:
+1. Clone
 ```bash
-git clone --recursive https://github.com/yourusername/gmcl_logi.git
+git clone https://github.com/yourusername/gmcl_logi.git
 ```
 
 2. Install LogiLED SDK from the dependencies
@@ -32,7 +32,6 @@ premake5 vs2022
 ## Usage
 
 ```lua
--- I'm. Not. Sure. That. It. Works.
 require("logi")
 local logi = Logitech
 
