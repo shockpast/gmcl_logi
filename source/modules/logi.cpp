@@ -71,18 +71,15 @@ static void ReadColor(GarrysMod::Lua::ILuaBase* LUA, int index, int &r, int &g, 
     return;
   }
 
-  LUA->PushString("r");
-  LUA->GetTable(-index);
+  LUA->GetField(-1, "r");
   r = LUA->GetNumber(-1);
   LUA->Pop(1);
 
-  LUA->PushString("g");
-  LUA->GetTable(-index);
+  LUA->GetField(-1, "g");
   g = LUA->GetNumber(-1);
   LUA->Pop(1);
 
-  LUA->PushString("b");
-  LUA->GetTable(-index);
+  LUA->GetField(-1, "b");
   b = LUA->GetNumber(-1);
   LUA->Pop(1);
 }
