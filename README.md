@@ -1,43 +1,40 @@
 # gmcl_logi
 
-A C++ Garry's Mod module for interfacing with LogiLED SDK *(tested on G102, and seems to be very buggy...)*
+A C++ Garry's Mod module for interfacing with LogiLED SDK.
 
 ## Requirements
 
 - Visual Studio 2022
-- [Logitech SDK](https://www.logitechg.com/en-us/innovation/developer-lab)
+- [LED ILLUMINATION SDK](https://www.logitechg.com/en-us/innovation/developer-lab)
 - [garrysmod_common](https://github.com/danielga/garrysmod_common) *(x64 branch)*
 
 ## Building
 
-1. Clone
+1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/gmcl_logi.git
+git clone https://github.com/shockpast/gmcl_logi.git
 ```
 
-2. Install LogiLED SDK from the dependencies
-
-3. Generate the project files:
+2. Install [garrysmod_common](https://github.com/danielga/garrysmod_common) with x86_64 branch from the dependencies
 ```bash
-premake5 vs2022
+git clone --branch x86-64-support-sourcesdk https://github.com/danielga/garrysmod_common development/gmcommon
 ```
 
-4. Open the solution in Visual Studio 2022 and build
+3. Install [LED ILLUMINATION SDK](https://www.logitechg.com/en-us/innovation/developer-lab) from the dependencies
+
+4. Generate the project files
+```bash
+premake5 vs2022 --gmcommon=development/gmcommon
+```
+
+5. Open the solution in Visual Studio 2022 and build with `x64` configuration
 
 ## Installation
 
 1. Build the module or download from releases
 2. Place `gmcl_logi_win64.dll` in `GarrysMod/garrysmod/lua/bin`
+3. Include it in your `.lua` file with `require("logi")` and access it through `Logitech` table.
 
-## Usage
+## Examples
 
-```lua
-require("logi")
-local logi = Logitech
-
-logi.Initialize("gmod")
-logi.SetTargetDevice(logi.DeviceType.Mouse)
-logi.SetLightning(Color(255, 0, 0))
-
-timer.Simple(5, function() logi.Shutdown() end)
-```
+You can view our examples in [examples/](https://github.com/shockpast/gmcl_logi/tree/main/examples)
