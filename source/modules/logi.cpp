@@ -42,8 +42,8 @@ static const std::pair<const char*, int> keyEnum[] = {
 };
 
 static const std::pair<const char*, int> deviceTypeEnum[] = {
-    {"Keyboard", 0x0}, {"Mouse", 0x3}, {"Mousemat", 0x4},
-    {"Headset", 0x8}, {"Speaker", 0xe}
+  {"Keyboard", LogiLed::Keyboard}, {"Mouse", LogiLed::Mouse}, {"Mousemat", LogiLed::Mousemat},
+  {"Headset", LogiLed::Headset}, {"Speaker", LogiLed::Speaker}
 };
 
 static void CreateEnumTable(GarrysMod::Lua::ILuaBase* LUA, const char* tableName, const std::pair<const char*, int> enumTable[], size_t size)
@@ -115,7 +115,7 @@ LUA_FUNCTION_STATIC(L_LogiLedSetLightingForKey)
 
   int r, g, b;
   ReadColor(LUA, -2, r, g, b);
-  
+
   bool result = LogiLedSetLightingForKeyWithKeyName(keyName, r, g, b);
   LUA->PushBool(result);
 
@@ -170,7 +170,7 @@ LUA_FUNCTION_STATIC(L_LogiLedPulseSingleKey)
 LUA_FUNCTION_STATIC(L_LogiLedStopEffectsOnKey)
 {
   LogiLed::KeyName keyName = static_cast<LogiLed::KeyName>(LUA->CheckNumber());
-  
+
   bool result = LogiLedStopEffectsOnKey(keyName);
   LUA->PushBool(result);
 
@@ -279,10 +279,10 @@ LUA_FUNCTION_STATIC(L_LogiLedStopEffects)
 
 void Logi::Initialize(GarrysMod::Lua::ILuaBase* LUA)
 {
-	LUA->PushSpecial(GarrysMod::Lua::SPECIAL_GLOB);
-		LUA->CreateTable();
-			LUA->PushCFunction(L_LogiLedInitWithName);
-			LUA->SetField(-2, "Initialize");
+  LUA->PushSpecial(GarrysMod::Lua::SPECIAL_GLOB);
+    LUA->CreateTable();
+      LUA->PushCFunction(L_LogiLedInitWithName);
+      LUA->SetField(-2, "Initialize");
       LUA->PushCFunction(L_LogiLedShutdown);
       LUA->SetField(-2, "Shutdown");
 
@@ -326,6 +326,6 @@ void Logi::Initialize(GarrysMod::Lua::ILuaBase* LUA)
 
       CreateEnumTable(LUA, "KeyName", keyEnum, sizeof(keyEnum) / sizeof(keyEnum[0]));
       CreateEnumTable(LUA, "DeviceType", deviceTypeEnum, sizeof(deviceTypeEnum) / sizeof(deviceTypeEnum[0]));
-		LUA->SetField(-2, "Logitech");
-	LUA->Pop();
+    LUA->SetField(-2, "Logitech");
+  LUA->Pop();
 }

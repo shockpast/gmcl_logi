@@ -35,6 +35,10 @@ premake5 vs2022 --gmcommon=development/gmcommon
 2. Place `gmcl_logi_win64.dll` in `GarrysMod/garrysmod/lua/bin`
 3. Include it in your `.lua` file with `require("logi")` and access it through `Logitech` table.
 
+## Functions
+
+[FUNCTIONS.md](FUNCTIONS.md)
+
 ## Examples
 
-You can view our examples in [examples/](https://github.com/shockpast/gmcl_logi/tree/main/examples)
+You can view our examples in [examples/](examples/)

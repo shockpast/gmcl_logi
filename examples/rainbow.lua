@@ -1,3 +1,9 @@
+--
+-- This example will make your Logitech keyboard light up in a rainbow pattern.
+--
+-- @shockpast
+--
+
 pcall(require, "logi")
 
 local logi = Logitech
